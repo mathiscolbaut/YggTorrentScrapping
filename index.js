@@ -5,7 +5,7 @@ const axios = require('axios');
 const https = require('https');
 const app = express();
 const port = 3000;
-const settings = require('settings');
+const settings = require('./settings');
 const Yggtorrent = require('yggtorrent-api');
 
 
@@ -43,10 +43,19 @@ app.get('/api/download', (req, res) => {
             console.error('Erreur lors de la connexion :', err);
             return res.status(500).json({ error: 'Erreur lors de la connexion' });
         }
-       // console.log('Connexion réussie !', ygg.jar);
+        console.log('Connexion réussie !', ygg.jar);
 
         // Maintenant que la connexion est réussie, nous pouvons effectuer le téléchargement
-        
+        ygg.downloadLink(linkToDownload, (err, result) => {
+            if (err) {
+                console.error('Erreur lors du téléchargement :', err);
+                return res.status(500).json({ error: 'Erreur lors du téléchargement' });
+            }
+
+            console.log('Téléchargement réussi :', result);
+
+            
+        });
     });
 });
     
