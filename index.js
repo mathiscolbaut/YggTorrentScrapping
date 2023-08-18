@@ -54,7 +54,7 @@ app.get('/api/download', (req, res) => {
 
             console.log('Téléchargement réussi :', result);
 
-            return res.status(200).json({ message: 'Téléchargement réussi' });
+            
         });
     });
 });
