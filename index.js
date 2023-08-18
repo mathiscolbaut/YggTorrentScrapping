@@ -5,7 +5,7 @@ const axios = require('axios');
 const https = require('https');
 const app = express();
 const port = 3000;
-const settings = require('./node_modules/settings');
+const settings = require('settings');
 const Yggtorrent = require('yggtorrent-api');
 
 
