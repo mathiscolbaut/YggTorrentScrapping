@@ -46,16 +46,7 @@ app.get('/api/download', (req, res) => {
         console.log('Connexion réussie !', ygg.jar);
 
         // Maintenant que la connexion est réussie, nous pouvons effectuer le téléchargement
-        ygg.downloadLink(linkToDownload, (err, result) => {
-            if (err) {
-                console.error('Erreur lors du téléchargement :', err);
-                return res.status(500).json({ error: 'Erreur lors du téléchargement' });
-            }
-
-            console.log('Téléchargement réussi :', result);
-
-            
-        });
+        
     });
 });
     
