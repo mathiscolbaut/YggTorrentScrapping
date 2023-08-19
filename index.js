@@ -54,7 +54,8 @@ app.get('/api/download', (req, res) => {
 
             console.log('Téléchargement réussi :', result);
 
-            
+            // Renvoyer le résultat du téléchargement en réponse
+            res.json({ downloadResult: result });
         });
     });
 });
