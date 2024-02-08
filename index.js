@@ -5,22 +5,23 @@ const axios = require('axios');
 const https = require('https');
 const app = express();
 const port = 3000;
-const settings = require('settings');
 const Yggtorrent = require('yggtorrent-api');
+require('dotenv').config()
 
+console.log(process.env.YGG_USERNAME)
 
 app.use(express.json());
 
-var ygg = new Yggtorrent({
-    host: settings.CONSTANT_URLYGG,
-    searchhost: settings.CONSTANT_URLSEARCHHOST,
-    username: 'moimathis89',
-    password: 'Coussette5',
+const ygg = new Yggtorrent({
+    host: process.env.URLYGG,
+    searchhost: process.env.URLSEARCH,
+    username: process.env.YGG_USERNAME,
+    password: process.env.YGG_PASSWORD,
 });
 
 app.post('/api/getTorrent', (req, res) => {
     const inputString = req.body.text; // La chaîne de caractères est envoyée dans la propriété "text" du corps de la requête JSON
-    
+
     // Ici, vous pouvez faire tout ce que vous voulez avec la chaîne de caractères (par exemple, l'analyser, la traiter, etc.).
     // Pour l'exemple, nous allons simplement renvoyer la même chaîne en réponse.
     ygg.search(inputString, (err, data) => {
